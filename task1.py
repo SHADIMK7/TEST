@@ -42,7 +42,6 @@ def receipt(product_names, quantity, price, gift_wrap_count):
     print(f"Gift Wrap Fee: ${gift_wrap_fee}")
     print("\nTotal: $", total)
 
-
 product_names = ["Product A", "Product B", "Product C"]
 price = [20, 40, 50]
 
