@@ -1,0 +1,48 @@
+Task 2
+
+1) Why do you like to join as a Software developer? 
+
+I love being a software developer because it lets me solve problems, be creative, and build cool things. The always changing nature of the field keeps me learning and growing. Working on interesting projects with different teams allows me to make a positive impact through technology.
+
+
+2) List top 3 softwares / tools that inspire you. Why do these tools inspire you?
+
+Git & GitHub:
+I like using these tools because they help me keep track of changes in my code, work well with others, and maintain the quality of my work. They make teamwork smooth and ensure that everyone is always updated with the code.
+
+Django Framework:
+Django makes building websites easier for me. It's very helpful as it takes care of a lot of the hard work, letting me focus on the important aspects of each project. It's more efficient and makes me more productive.
+
+Postman:
+Postman is a very good tool for testing API's. Its user-friendly design makes testing API's very easily.
+
+
+3) List top 3 organisations you like to join in your career & why you like these organisations.
+
+Google:
+I like Google because they're always coming up with cool things. Joining them would mean getting to work on interesting projects and being part of a company known for innovation.
+
+Amazon:
+Amazon is big and does a lot of things. I'd like to work there because it seems like a place where I can learn a lot, work on diverse projects, and be part of a company that's changing how things are done.
+
+Microsoft:
+Microsoft is about using technology to help people. I like their focus on making things accessible. Joining Microsoft would mean getting to work on mid blowing tech.
+
+
+
+4) How you position yourself in this industry after 2 years.
+
+In two years, I see myself as a more experienced software developer. I want to be known for creating efficient and effective solutions. I see myself taking on more responsibilities, helping others learn, and being an active part of the tech community.
+
+
+
+5) List 3 projects / products you have built or have planned to build in the upcoming year, also explain your role in the same.
+
+Sportzap:
+I helped build the backend of a football turf booking app. My job was to make sure the backend worked smoothly. I worked with different teams to make sure everything works perfectly.
+
+NativeHire:
+This is a website that connects local employers with contractors. I played the role of a full stack developer and developed it from start to finish. 
+
+E-commerce Project:
+I made an online store where people can buy things. I did everything from designing the look of the site to making sure the shopping cart worked. It was a one-person project, so I did everything.
