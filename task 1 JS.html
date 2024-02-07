@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Details</title>
+</head>
+
+<body>
+
+    <div id="invoiceDetails"></div>
+
+    <script>
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+                this.quantity = 0;
+                this.giftWrap = 0;
+            }
+
+            Total() {
+                return (this.quantity * this.price) + (this.giftWrap * 1);
+            }
+
+            Discount(discount_type, cart_total, total_quantity) {
+                let discount_Price = 0;
+
+                if (discount_type === "flat_10_discount" && cart_total > 200) {
+                    discount_Price = Math.min(10, cart_total);
+                } else if (discount_type === "bulk_5_discount" && this.quantity > 10) {
+                    discount_Price = this.quantity * this.price * 0.05;
+                } else if (discount_type === "bulk_10_discount" && total_quantity > 20) {
+                    discount_Price = Math.min(cart_total * 0.1, cart_total);
+                } else if (discount_type === "tiered_50_discount" && total_quantity > 30 && this.quantity > 15) {
+                    discount_Price = Math.max(0, (this.quantity - 15) * this.price * 0.5);
+                }
+
+                return discount_Price;
+            }
+        }
+
+        function Shipping_Fee(total_quantity) {
+            return Math.ceil(total_quantity / 10) * 5;
+        }
+
+        function main() {
+            const products = {
+                "Product A": new Product("Product A", 20),
+                "Product B": new Product("Product B", 40),
+                "Product C": new Product("Product C", 50),
+            };
+
+            let total_quantity = 0;
+            let cart_total = 0;
+
+            for (const [product_name, product] of Object.entries(products)) {
+                const quantity = parseInt(prompt(`Enter the quantity of ${product_name}:`));
+                product.giftWrap = parseInt(prompt(`Is ${product_name} wrapped as a gift? (0 for No, 1 for Yes):`));
+                product.quantity = quantity;
+
+                total_quantity += quantity;
+                cart_total += product.Total();
+            }
+
+            const discount_types = ["flat_10_discount", "bulk_5_discount", "bulk_10_discount", "tiered_50_discount"];
+            const applied_discount = {};
+
+            for (const discount_type of discount_types) {
+                for (const [product_name, product] of Object.entries(products)) {
+                    const discount_Price = product.Discount(discount_type, cart_total, total_quantity);
+                    if (discount_Price > (applied_discount[discount_type] || 0)) {
+                        applied_discount[discount_type] = discount_Price;
+                    }
+                }
+            }
+
+            const best_discount_type = Object.keys(applied_discount).reduce((a, b) => applied_discount[a] > applied_discount[b] ? a : b);
+            const best_discount_price = applied_discount[best_discount_type] || 0;
+
+            const shipping_fee = Shipping_Fee(total_quantity);
+
+            let output = "<h2>Invoice Details</h2>";
+            for (const [product_name, product] of Object.entries(products)) {
+                output += `<p>${product_name} - Quantity: ${product.quantity} - Total: $${product.Total()}</p>`;
+            }
+
+            output += `<p>Subtotal : $${cart_total}</p>`;
+            output += `<p>Discount Applied (${best_discount_type}): $${best_discount_price}</p>`;
+            output += `<p>Shipping Fee: $${shipping_fee}</p>`;
+            output += `<p>Gift Wrap Fee: $${Object.values(products).reduce((acc, cur) => acc + (cur.giftWrap * 1), 0)}</p>`;
+
+            const totalAmount = cart_total - best_discount_price + shipping_fee + Object.values(products).reduce((acc, cur) => acc + cur.giftWrap * 1, 0);
+
+            output += `<p>Total: $${totalAmount}</p>`;
+
+            document.getElementById("invoiceDetails").innerHTML = output;
+        }
+
+        main();
+    </script>
+</body>
+
+</html>
